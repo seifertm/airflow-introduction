@@ -21,17 +21,24 @@ Linux/MacOS
     airflow standalone
 
 
-Windows (Powershell)
---------------------
-.. code:: powershell
+Windows
+-------
+
+Airflow has no native Windows support. You will have to set up WSL2. Please install "Ubuntu on Windows" from the Windows Store and run the following commands in a Ubuntu shell:
+
+.. code:: bash
 
     git clone https://github.com/seifertm/airflow-introduction.git
     cd airflow-introduction
-    python -m venv venv
-    venv\Scripts\activate.ps1
+    sudo apt-get update
+    sudo apt-get install python3-pip
+    sudo apt install python3.8-venv
+    python3 -m venv venv
+    . venv/bin/activate
     pip install apache-airflow==2.3.3
-    $env:AIRFLOW_HOME = "<path to current directory>";
-    $env:AIRFLOW__CORE__LOAD_EXAMPLES = "false";
+    pip install flask-appbuilder
+    export AIRFLOW_HOME="${PWD}"
+    export AIRFLOW__CORE__LOAD_EXAMPLES="false"
     airflow standalone
 
 
